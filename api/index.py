@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from database_actions.create_caregiver import create_caregiver
 from database_actions.create_elder import create_elder
-from database_actions.find_user import find_user_phone
+from database_actions.find_user import find_user_uid
 
 from firebase.setup import init_firebase_app
 
@@ -55,8 +55,8 @@ def endpoint_create_elder():
 
 @app.route('/api/find/user')
 def endpoint_find_user():
-    phone_number = request.args.get("phoneNumber")
-    result = find_user_phone(phone_number)
+    uid = request.args.get("uid")
+    result = find_user_uid(uid)
     return result
 
 if __name__ == '__main__':

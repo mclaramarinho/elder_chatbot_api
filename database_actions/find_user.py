@@ -1,6 +1,6 @@
 from firebase.setup import db
 
-def find_user_phone(phone_number):
+def find_user_uid(uid):
     returnData = {
         "exists": False,
         "user_type": "",
@@ -9,17 +9,18 @@ def find_user_phone(phone_number):
     main_ref = db.reference('users').get()
     if "caregivers" in main_ref:
         all_caregivers = db.reference('users/caregivers').get()
-        for cpf in all_caregivers:
-            caregiver_data = db.reference(f'users/caregivers/{cpf}').get()
-            if caregiver_data["phone_number"] == phone_number:
+        for item in all_caregivers:
+            caregiver_data = db.reference(f'users/caregivers/{item}').get()
+            if caregiver_data["uid"] == uid:
                 returnData["exists"] = True
                 returnData["user_type"] = "caregiver"
                 returnData["user_data"] = caregiver_data
+
     if "elders" in main_ref:
         all_elders = db.reference('users/elders').get()
-        for cpf in all_elders:
-            elder_data = db.reference(f'users/elders/{cpf}').get()
-            if elder_data["phone_number"] == phone_number:
+        for item in all_elders:
+            elder_data = db.reference(f'users/elders/{item}').get()
+            if elder_data["uid"] == uid:
                 returnData["exists"] = True
                 returnData["user_type"] = "elder"
                 returnData["user_data"] = elder_data
