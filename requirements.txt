@@ -1,0 +1,4 @@
+pyrebase
+firebase_admin
+requests
+python-dotenv
