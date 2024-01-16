@@ -11,7 +11,7 @@ firebase_config = {
   "project_id": environ["PROJECT_ID"],
   "private_key_id": environ["PRIVATE_KEY_ID"],
   "private_key": environ["PRIVATE_KEY"],
-  "client_email": f"firebase-adminsdk-mcrds@{environ["PROJECT_ID"]}.iam.gserviceaccount.com",
+  "client_email": f"firebase-adminsdk-mcrds@{environ['PROJECT_ID']}.iam.gserviceaccount.com",
   "client_id": environ["CLIENT_ID"],
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
