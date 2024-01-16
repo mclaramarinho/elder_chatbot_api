@@ -9,7 +9,7 @@ init_firebase_app()
 
 app = Flask(__name__)
 
-@app.get("/api/create/caregiver/")
+@app.route("/api/create/caregiver/")
 def endpoint_create_caregiver():
     args = {
         "cpf": request.args.get("cpf"),
@@ -26,7 +26,7 @@ def endpoint_create_caregiver():
     else:
         return jsonify(result), 500
 
-@app.get("/api/create/elder/")
+@app.route("/api/create/elder/")
 def endpoint_create_elder():
     args = {
         "cpf": request.args.get("cpf"),
@@ -50,7 +50,7 @@ def endpoint_create_elder():
     else:
         return jsonify(result), 500
 
-@app.get('/api/find/user')
+@app.route('/api/find/user')
 def endpoint_find_user():
     phone_number = request.args.get("phoneNumber")
     result = find_user_phone(phone_number)
