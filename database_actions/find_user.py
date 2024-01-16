@@ -27,7 +27,7 @@ def find_user_phone(phone_number):
     return returnData
 
 
-def find_caregiver_cpf(cpf):
+def find_caregiver_uid(uid):
     returnData = {
         "exists": False,
         "user_type": "",
@@ -35,10 +35,10 @@ def find_caregiver_cpf(cpf):
     }
     all_caregivers = db.reference(f'users/caregivers').get()
 
-    if cpf in all_caregivers:
+    if uid in all_caregivers:
         for key in all_caregivers:
-            if key == cpf:
-                caregiver_data = db.reference(f'users/caregivers/{cpf}').get()
+            if key == uid:
+                caregiver_data = db.reference(f'users/caregivers/{uid}').get()
                 returnData["exists"] = True
                 returnData["user_type"] = "caregiver"
                 returnData["user_data"] = caregiver_data
@@ -46,7 +46,7 @@ def find_caregiver_cpf(cpf):
     return returnData
 
 
-def find_elder_cpf(cpf):
+def find_elder_uid(uid):
     returnData = {
         "exists": False,
         "user_type": "",
@@ -54,10 +54,10 @@ def find_elder_cpf(cpf):
     }
     all_elders = db.reference(f'users/elders').get()
 
-    if cpf in all_elders:
+    if uid in all_elders:
         for key in all_elders:
-            if key == cpf:
-                elder_data = db.reference(f'users/elders/{cpf}').get()
+            if key == uid:
+                elder_data = db.reference(f'users/elders/{uid}').get()
                 returnData["exists"] = True
                 returnData["user_type"] = "elder"
                 returnData["user_data"] = elder_data

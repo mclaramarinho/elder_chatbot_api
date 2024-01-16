@@ -1,10 +1,11 @@
-def data_structure(type, cpf, first_name, last_name, birthday, phone_number, main_ec_name = "", main_ec_phone = "", sec_ec_phone="", sec_ec_name="", pin="", caregiver_cpf=""):
+def data_structure(type, cpf, first_name, last_name, birthday, phone_number, uid, main_ec_name = "", main_ec_phone = "", sec_ec_phone="", sec_ec_name="", pin="", caregiver_uid=""):
     data = {
         "cpf": cpf,
         "name": {
             "first_name": first_name,
             "last_name": last_name
         },
+        "uid": uid,
         "birthday": birthday,
         "phone_number": phone_number,
     }
@@ -20,7 +21,7 @@ def data_structure(type, cpf, first_name, last_name, birthday, phone_number, mai
                     "phone_number": sec_ec_phone
                 }
             }
-            data["caregiver"] = caregiver_cpf
+            data["caregiver"] = caregiver_uid
         elif type == "cg":
             data["pin"] = pin
             data["elders_associated"] = {}

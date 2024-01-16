@@ -17,9 +17,10 @@ def endpoint_create_caregiver():
         "l_name": request.args.get("lastName"),
         "bday": request.args.get("birthday"),
         "phone": request.args.get("phoneNumber"),
-        "pin": request.args.get("securityPin")
+        "pin": request.args.get("securityPin"),
+        "uid": request.args.get("uid")
     }
-    result = create_caregiver(cpf=args["cpf"], first_name=args["f_name"], last_name=args["l_name"], birthday=args["bday"], phone_number=args["phone"], pin=args["pin"])
+    result = create_caregiver(cpf=args["cpf"], first_name=args["f_name"], last_name=args["l_name"], birthday=args["bday"], phone_number=args["phone"], pin=args["pin"], uid=args["uid"])
 
     if result["message"] == "Success!":
         return jsonify(result), 200
@@ -38,12 +39,14 @@ def endpoint_create_elder():
         "main_ec_phone": request.args.get("mainECPhone"),
         "sec_ec_name": request.args.get("secECName"),
         "sec_ec_phone": request.args.get("secECPhone"),
-        "caregiver_cpf": request.args.get("caregiverCPF")
+        "caregiver_uid": request.args.get("caregiverUID"),
+        "uid": request.args.get("uid")
     }
     result = create_elder(cpf=args["cpf"], first_name=args["f_name"], last_name=args["l_name"],
                           birthday=args["bday"], phone_number=args["phone"], main_ec_name=args["main_ec_name"],
                           main_ec_phone=args["main_ec_phone"], sec_ec_name=args["sec_ec_name"],
-                          sec_ec_phone=args["sec_ec_phone"], caregiver_cpf=args["caregiver_cpf"])
+                          sec_ec_phone=args["sec_ec_phone"], caregiver_uid=args["caregiver_uid"],
+                          uid=args["uid"])
 
     if result["message"] == "Success!":
         return jsonify(result), 200
