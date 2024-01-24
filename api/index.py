@@ -57,6 +57,7 @@ def endpoint_create_elder():
 def endpoint_find_user():
     uid = request.args.get("uid")
     result = find_user_uid(uid)
+    print(result)
     return result
 
 if __name__ == '__main__':
