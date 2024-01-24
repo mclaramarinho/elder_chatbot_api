@@ -1,8 +1,8 @@
-from abc import abstractmethod
+import abc
+from abc import abstractmethod, ABC
 
 
-class User:
-    @abstractmethod
+class User(ABC):
     def __init__(self, **kwargs):
         self.cpf = kwargs['cpf']
         self.first_name = kwargs['first_name']
@@ -10,6 +10,11 @@ class User:
         self.birthday = kwargs['birthday']
         self.phone_number = kwargs['phone_number']
         self.uid = kwargs['uid']
+
+    @abstractmethod
+    def return_user_data(self):
+        pass
+
 
 class Elder(User):
     def __init__(self, **kwargs):
@@ -42,6 +47,8 @@ class Elder(User):
             },
             "caregiver": self.caregiver
         }
+
+
 class Caregiver(User):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
